@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+	<script type="text/javascript" src="layui/layui.js"></script>
+</head>
+<body>
+	<style type="text/css">
+		button{
+			/*background-color: #eee;*/
+			font-size: 30px;
+		}
+		.color-grey{
+			background-color: grey;
+		}
+		 
+		.color-orange{
+			background-color: orange;
+		}
+		.color-green{
+			background-color: green;
+		}
+		.color-blue{
+			background-color: blue;
+		}
+		.fontColor{
+			color: red;
+		}
+	</style>
+	<button title="bun" >jump</button>
+	<button title="bun">jump</button>
+	<button title="bun" >jump</button>
+	<button title="bun">jump</button>
+    <input type="checkbox" id="selected">all
+    <input type="checkbox" name="items">1
+    <input type="checkbox" name="items">2
+    <input type="checkbox" name="items">3
+    <input type="checkbox" name="items">4
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	layui.use('layer',function(){
+		var layer = layui.layer;
+	})
+    $(document).ready(function(){
+    	$("#selected").click(function(){
+    	if($(this).is(":checked")){
+    		$("input[name='items']:checkbox").attr('checked',true);
+    	}else{
+    		$("input[name='items']:checkbox").attr('checked',false);
+    	}
+    });
+    })
+    
+
+// 	function jump(){
+// 		layer.open({
+// title: '在线调试'
+// ,content: '可以填写任意的layer代码',
+// btn:['按钮1','按钮2','按钮3','按钮4'],
+// yes:function(index,layero){
+// // alert("按钮1");
+// document.getElementsByTagName('button')[0].className='color-blue';
+// document.getElementsByTagName('button')[0].classList.add('fontColor');
+
+// },
+// btn2:function(index,layero){
+// alert("按钮2");
+// },
+// btn3:function(index,layero){
+// 	alert("anniu")
+// },
+// btn4:function(index,layero){
+// 	alert()
+// }
+// });
+// 	}
+
+	$(document).ready(function(){
+		var timenull = null;
+		$('button').addClass('color-grey');
+		
+		$("button").bind('click',function(index){
+			// alert(index); 
+			clearTimeout(timenull);
+			var ele = $(this);
+			// // alert(ele.index()); 
+			// ele.removeClass();
+			// ele.addClass('fontColor')
+			timenull = setTimeout(function(){
+				alert("1");
+			},300);
+		}).bind('dblclick',function(){
+			clearTimeout(timenull);
+			var ele = $(this);
+			layer.open({
+				title: '在线调试'
+				,content: '可以填写任意的layer代码',
+				btn:['空闲','占用','预订','请求结算'],
+				yes:function(index,layero){
+				// alert("按钮1");
+				ele.removeClass();
+			    ele.addClass('color-grey');
+			    layer.close(index);
+				},
+				btn2:function(index,layero){
+				// alert("按钮2");
+				ele.removeClass();
+			    ele.addClass('color-orange');
+				},
+				btn3:function(index,layero){
+					// alert("anniu")
+					ele.removeClass();
+			    ele.addClass('color-green');
+				},
+				btn4:function(index,layero){
+					// alert()
+					ele.removeClass();
+			    ele.addClass('color-blue');
+				}
+				});
+
+		});
+	})
+</script>
+</html>

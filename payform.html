@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="layui/css/layui.css"  media="all">
+</head>
+<body>
+	<form class="layui-form">
+		<div class='layui-form-item'>
+		    <label class='layui-form-label'>支付方式</label>
+		    <div class='layui-input-block'>
+		      <input type='radio' name='pay' value='weipay' title='微信支付' checked=''>
+		      <input type='radio' name='pay' value='payb' title='支付宝支付'>
+		      <input type='radio' name='pay' value='cashpay' title='现金支付'>
+		      <input type='radio' name='pay' value='vippay' title='会员卡支付'>
+		    </div>
+		</div>
+		<div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button class="layui-btn" lay-submit="" lay-filter="">确认支付</button>
+		      <button type="button" onclick='close()' class="layui-btn layui-btn-primary" lay-filter="closebtn">取消</button>
+		    </div>
+		</div>
+	</form>
+</body>
+<script src="layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+ function close(){
+ 	parent.layer.closeAll();
+ }
+   
+ /* //监听提交
+  form.on('submit(closebtn)', function(data){
+    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    parent.layer.close(index); //再执行关闭   
+  });*/
+  
+  
+});
+</script>
+</html>
+
+
+
+<form class="layui-form" style="padding:50px;"><div class="layui-form-item"><label class="layui-form-label">支付方式</label><div class="layui-input-block"><input type="radio" name="pay" value="weipay" title="微信支付" checked=""><input type="radio" name="pay" value="payb" title="支付宝支付"><input type="radio" name="pay" value="cashpay" title="现金支付"><input type="radio" name="pay" value="vippay" title="会员卡支付"></div></div><hr><button class="layui-btn" lay-submit lay-filter="btn_test">立即支付</button><button class="layui-btn" id="close">取消</button></form>
